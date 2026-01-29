@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+    <style>
+        .label { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 500; fill: #000000; }
+        .node-label { font-family: 'Segoe UI', sans-serif; font-size: 18px; font-weight: bold; fill: #000000; text-anchor: middle; }
+        .arrow { stroke-width: 2; fill: none; }
+        .arrow-head { fill: #333; }
+        .bg { fill: white; }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="arrow-head"/>
+        </marker>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white" />
+    
+    <!-- Creator -->
+    <rect x="500.0" y="60.0" width="200" height="80" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="3"/>
+    <text x="600" y="105" class="node-label">Survey Creator</text>
+
+    <!-- System -->
+    <circle cx="600" cy="450" r="100" fill="#fff3e0" stroke="#ef6c00" stroke-width="4"/>
+    <text x="600" y="435" class="node-label">Survonica</text>
+    <text x="600" y="460" class="node-label">System</text>
+
+    <!-- Respondent -->
+    <rect x="150.0" y="710.0" width="200" height="80" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3"/>
+    <text x="250" y="755" class="node-label">Respondent</text>
+
+    <!-- AI -->
+    <rect x="840.0" y="710.0" width="220" height="80" fill="#f3e5f5" stroke="#7b1fa2" stroke-dasharray="8,5" stroke-width="3"/>
+    <text x="950" y="755" class="node-label">AI Service (Llama)</text>
+    
+        <path d="M 540 140.0 C 540 250 540 300 540 380" stroke="#1565c0" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="472.0" y="190" width="56" height="14" fill="white" opacity="0.8"/>
+        <text x="500" y="200" class="label" text-anchor="middle" fill="#1565c0">1. Login</text>
+        
+        <path d="M 580 140.0 C 580 200 580 330 580 365" stroke="#1565c0" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="514.0" y="240" width="112" height="14" fill="white" opacity="0.8"/>
+        <text x="570" y="250" class="label" text-anchor="middle" fill="#1565c0">2. Create Survey</text>
+        
+        <path d="M 620 140.0 C 620 200 620 330 620 365" stroke="#1565c0" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="570.5" y="240" width="119" height="14" fill="white" opacity="0.8"/>
+        <text x="630" y="250" class="label" text-anchor="middle" fill="#1565c0">3. Config Visuals</text>
+        
+        <path d="M 660 140.0 C 660 250 660 300 660 380" stroke="#1565c0" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="671.0" y="210" width="98" height="14" fill="white" opacity="0.8"/>
+        <text x="720" y="220" class="label" text-anchor="middle" fill="#1565c0">4. Define Test</text>
+        
+        <path d="M 685 410 C 780 370 800 150 720.0 120" stroke="#e65100" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="725.5" y="380" width="49" height="14" fill="white" opacity="0.8"/>
+        <text x="750" y="390" class="label" text-anchor="middle" fill="#e65100">5. Link</text>
+        
+        <path d="M 695 450 C 820 450 840 100 720.0 100" stroke="#e65100" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="731.0" y="440" width="98" height="14" fill="white" opacity="0.8"/>
+        <text x="780" y="450" class="label" text-anchor="middle" fill="#e65100">6. Audit Flags</text>
+        
+        <path d="M 685 490 C 800 530 820 50 720.0 80" stroke="#e65100" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="669.0" y="500" width="182" height="14" fill="white" opacity="0.8"/>
+        <text x="760" y="510" class="label" text-anchor="middle" fill="#e65100">7. Analytics / 8. Insights</text>
+        
+        <path d="M 520 490 C 480 530 210 600 210 710.0" stroke="#2e7d32" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="221.0" y="520" width="98" height="14" fill="white" opacity="0.8"/>
+        <text x="270" y="530" class="label" text-anchor="middle" fill="#2e7d32">9. Survey Link</text>
+        
+        <path d="M 540 520 C 520 570 250 630 250 710.0" stroke="#2e7d32" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="264.5" y="570" width="91" height="14" fill="white" opacity="0.8"/>
+        <text x="310" y="580" class="label" text-anchor="middle" fill="#2e7d32">10. Qual Test</text>
+        
+        <path d="M 290 710.0 C 290 650 450 450 505 450" stroke="#1b5e20" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="315.0" y="460" width="70" height="14" fill="white" opacity="0.8"/>
+        <text x="350" y="470" class="label" text-anchor="middle" fill="#1b5e20">11. Submit</text>
+        
+        <path d="M 640 530 C 660 570 850 600 910 710.0" stroke="#6a1b9a" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="831.5" y="540" width="77" height="14" fill="white" opacity="0.8"/>
+        <text x="870" y="550" class="label" text-anchor="middle" fill="#6a1b9a">12. Prompts</text>
+        
+        <path d="M 950 710.0 C 950 630 700 550 670 510" stroke="#4a148c" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="877.5" y="590" width="105" height="14" fill="white" opacity="0.8"/>
+        <text x="930" y="600" class="label" text-anchor="middle" fill="#4a148c">13. Generate Qs</text>
+        
+        <path d="M 990 710.0 C 990 650 740 510 690 480" stroke="#4a148c" class="arrow" marker-end="url(#arrowhead)"/>
+        <rect x="929.5" y="560" width="161" height="14" fill="white" opacity="0.8"/>
+        <text x="1010" y="570" class="label" text-anchor="middle" fill="#4a148c">14. Visuals / 15. Audit</text>
+        </svg>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survonica Use Case Diagram</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+
+<body>
+    <div class="mermaid">
+        usecaseDiagram
+        actor "Survey Creator" as Creator
+        actor "Respondent" as Respondent
+        actor "AI Service" as AI
+
+        package "Survonica System" {
+        usecase "Login / Register" as UC1
+        usecase "Create Survey with AI Assistant" as UC2
+        usecase "Generate Questions from Chat" as UC3
+        usecase "Detect Redundancies & Bias" as UC4
+        usecase "Generate Branding Images" as UC5
+        usecase "Edit Survey Manually" as UC6
+        usecase "Add Qualification Test" as UC7
+        usecase "Distribute Survey (Email/Link)" as UC8
+        usecase "View Real-time Analytics" as UC9
+        usecase "Analyze Sentiments & Trends" as UC10
+
+        usecase "Complete Qualification Test" as UC11
+        usecase "Take Survey" as UC12
+        usecase "Submit Response" as UC13
+        }
+
+        %% Creator Interactions
+        Creator --> UC1
+        Creator --> UC2
+        Creator --> UC6
+        Creator --> UC7
+        Creator --> UC8
+        Creator --> UC9
+        Creator --> UC5
+
+        %% Includes/Extensions
+        UC2 ..> UC3 : <<include>>
+            UC2 ..> UC4 : <<include>>
+                UC9 ..> UC10 : <<include>>
+                    UC12 ..> UC11 : <<include>>
+                        UC12 ..> UC13 : <<include>>
+
+                            %% AI Service Interactions
+                            AI -- UC3
+                            AI -- UC4
+                            AI -- UC5
+                            AI -- UC10
+
+                            %% Respondent Interactions
+                            Respondent --> UC11
+                            Respondent --> UC12
+    </div>
+</body>
+
+</html>

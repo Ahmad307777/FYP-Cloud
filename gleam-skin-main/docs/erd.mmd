@@ -1,0 +1,65 @@
+erDiagram
+    User ||--o{ Survey : creates
+    User {
+        int id PK
+        string username
+        string email
+        string password_hash
+    }
+
+    Survey ||--o{ Question : contains
+    Survey ||--o{ QualificationTest : "has (optional)"
+    Survey ||--o{ SurveyResponse : receives
+    Survey ||--o{ RespondentQualification : tracks
+    
+    Survey {
+        int id PK
+        int user_id FK
+        string title
+        string description
+        string template
+        boolean require_qualification
+        int qualification_pass_score
+        json allowed_domains
+        json design
+        int response_counter
+        datetime created_at
+        datetime updated_at
+    }
+
+    Question {
+        int id PK
+        int survey_id FK
+        string text
+        string type
+        json options
+        boolean is_redundant
+        boolean is_biased
+    }
+
+    QualificationTest {
+        int id PK
+        int survey_id FK
+        string topic
+        json questions
+        int time_limit
+    }
+
+    SurveyResponse {
+        int id PK
+        int survey_id FK
+        string respondent_email
+        json responses
+        int quality_score
+        json quality_analysis
+        boolean is_flagged
+        datetime completed_at
+    }
+
+    RespondentQualification {
+        int id PK
+        int survey_id FK
+        string respondent_email
+        int score
+        boolean passed
+    }

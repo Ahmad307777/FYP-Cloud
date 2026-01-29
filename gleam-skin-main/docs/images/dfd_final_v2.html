@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Survonica DFD Render</title>
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --bg: #ffffff;
+            --text: #0f172a;
+        }
+
+        body {
+            background: var(--bg);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 900px;
+            position: relative;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .node {
+            position: absolute;
+            padding: 20px 40px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .system {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: white;
+            top: 350px;
+            left: 500px;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .entity {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            color: #1e293b;
+            min-width: 200px;
+        }
+
+        .creator {
+            top: 50px;
+            left: 500px;
+            border-color: var(--primary);
+        }
+
+        .respondent {
+            top: 700px;
+            left: 150px;
+            border-color: var(--secondary);
+        }
+
+        .ai {
+            top: 700px;
+            left: 850px;
+            border-color: var(--accent);
+        }
+
+        .arrow-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+        }
+
+        .label {
+            position: absolute;
+            font-size: 13px;
+            font-weight: 600;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            z-index: 15;
+            white-space: nowrap;
+        }
+
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: 800;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="dfd0" class="canvas">
+        <div class="title">DFD Level 0: Context Diagram</div>
+
+        <div class="node system">Survonica<br>System</div>
+        <div class="node entity creator">Survey Creator</div>
+        <div class="node entity respondent">Respondent</div>
+        <div class="node entity ai">AI Service (Llama/SD)</div>
+
+        <svg class="arrow-layer">
+            <defs>
+                <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#0ea5e9" />
+                </marker>
+                <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#10b981" />
+                </marker>
+                <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#8b5cf6" />
+                </marker>
+            </defs>
+
+            <!-- CREATOR ARROWS -->
+            <path d="M 550 150 L 550 350" stroke="#0ea5e9" stroke-width="2" fill="none" marker-end="url(#arrow-blue)" />
+            <path d="M 580 350 L 580 150" stroke="#0ea5e9" stroke-width="2" fill="none" marker-end="url(#arrow-blue)" />
+            <path d="M 610 150 L 610 350" stroke="#0ea5e9" stroke-width="2" fill="none" marker-end="url(#arrow-blue)" />
+            <path d="M 640 350 L 640 150" stroke="#0ea5e9" stroke-width="2" fill="none" marker-end="url(#arrow-blue)" />
+
+            <path d="M 680 150 C 750 250 800 350 700 450" stroke="#0ea5e9" stroke-width="2" fill="none"
+                marker-end="url(#arrow-blue)" />
+            <path d="M 500 450 C 400 350 450 250 520 150" stroke="#0ea5e9" stroke-width="2" fill="none"
+                marker-end="url(#arrow-blue)" />
+
+            <!-- RESPONDENT ARROWS -->
+            <path d="M 520 540 Q 400 600 250 700" stroke="#10b981" stroke-width="2" fill="none"
+                marker-end="url(#arrow-green)" />
+            <path d="M 280 700 Q 450 650 500 520" stroke="#10b981" stroke-width="2" fill="none"
+                marker-end="url(#arrow-green)" />
+            <path d="M 600 550 L 250 750" stroke="#10b981" stroke-width="2" fill="none"
+                marker-end="url(#arrow-green)" />
+            <path d="M 350 750 L 600 550" stroke="#10b981" stroke-width="2" fill="none"
+                marker-end="url(#arrow-green)" />
+
+            <!-- AI ARROWS -->
+            <path d="M 680 540 Q 800 600 950 700" stroke="#8b5cf6" stroke-width="2" fill="none"
+                marker-end="url(#arrow-purple)" />
+            <path d="M 950 700 Q 850 650 700 520" stroke="#8b5cf6" stroke-width="2" fill="none"
+                marker-end="url(#arrow-purple)" />
+            <path d="M 700 450 L 950 700" stroke="#8b5cf6" stroke-width="2" fill="none"
+                marker-end="url(#arrow-purple)" />
+            <path d="M 1050 700 Q 1100 450 700 450" stroke="#8b5cf6" stroke-width="2" fill="none"
+                marker-end="url(#arrow-purple)" />
+        </svg>
+
+        <div class="label" style="top: 200px; left: 450px;">1. Login Request</div>
+        <div class="label" style="top: 230px; left: 590px;">2. Auth Status</div>
+        <div class="label" style="top: 260px; left: 450px;">3. AI Chat/Voice Commands</div>
+        <div class="label" style="top: 290px; left: 650px;">4. Generated Drafts</div>
+        <div class="label" style="top: 320px; left: 750px;">5. Visual Branding</div>
+        <div class="label" style="top: 350px; left: 350px;">10. Reports & Insights</div>
+
+        <div class="label" style="top: 600px; left: 200px;">11. Screening Test</div>
+        <div class="label" style="top: 640px; left: 350px;">12. Test Answers</div>
+        <div class="label" style="top: 680px; left: 400px;">13. Survey Questions</div>
+        <div class="label" style="top: 720px; left: 450px;">14. Response Data</div>
+
+        <div class="label" style="top: 600px; left: 880px;">16. Text Prompts</div>
+        <div class="label" style="top: 640px; left: 750px;">17. Generated JSON</div>
+        <div class="label" style="top: 680px; left: 800px;">20. Raw Data for NLP</div>
+        <div class="label" style="top: 500px; left: 950px;">21. Sentiment Results</div>
+    </div>
+
+</body>
+
+</html>

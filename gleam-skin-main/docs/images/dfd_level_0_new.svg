@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+    <style>
+        .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 500; fill: #1e293b; }
+        .node-label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #0f172a; text-anchor: middle; }
+        .arrow { stroke-width: 2.5; fill: none; }
+        .arrow-head { fill: #334155; }
+        .bg-white { fill: #ffffff; }
+        .entity-box { stroke-width: 3; rx: 12; ry: 12; }
+        .system-bubble { stroke-width: 4; fill: #f8fafc; stroke: #0284c7; }
+        .creator-style { fill: #f0f9ff; stroke: #0ea5e9; }
+        .respondent-style { fill: #f0fdf4; stroke: #22c55e; }
+        .ai-style { fill: #faf5ff; stroke: #a855f7; }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="arrow-head"/>
+        </marker>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" class="bg-white" />
+
+    <!-- External Entity: Survey Creator (Top) -->
+    <rect x="450" y="50" width="300" height="100" class="entity-box creator-style" />
+    <text x="600" y="105" class="node-label">Survey Creator</text>
+
+    <!-- Main Process: Survonica System (Center) -->
+    <circle cx="600" cy="450" r="120" class="system-bubble" />
+    <text x="600" y="445" class="node-label">0: Survonica</text>
+    <text x="600" y="475" class="node-label">System</text>
+
+    <!-- External Entity: Respondent (Bottom Left) -->
+    <rect x="100" y="750" width="250" height="100" class="entity-box respondent-style" />
+    <text x="225" y="805" class="node-label">Respondent</text>
+
+    <!-- External Entity: AI Service (Bottom Right) -->
+    <rect x="850" y="750" width="250" height="100" class="entity-box ai-style" />
+    <text x="975" y="805" class="node-label">AI Service (Llama)</text>
+
+    <!-- DATA FLOWS: CREATOR <-> SYSTEM -->
+    <!-- 1. Credentials -->
+    <path d="M 520 150 Q 520 300 520 335" stroke="#0ea5e9" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="440" y="240" class="label">1. Login Credentials</text>
+
+    <!-- 2. Auth Status -->
+    <path d="M 560 335 Q 560 200 560 150" stroke="#0ea5e9" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="565" y="240" class="label">2. Auth Status</text>
+
+    <!-- 3. AI Chat/Voice Commands -->
+    <path d="M 600 150 L 600 330" stroke="#0ea5e9" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="610" y="210" class="label">3. AI Chat/Voice Commands</text>
+
+    <!-- 4. Generated Documents -->
+    <path d="M 640 330 L 640 150" stroke="#0ea5e9" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="650" y="260" class="label">4. Generated Drafts</text>
+
+    <!-- 5. Branding/Rules -->
+    <path d="M 680 150 Q 680 300 680 335" stroke="#0ea5e9" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="690" y="300" class="label">5. Visuals & Rules</text>
+
+    <!-- 10. Analytics/Reports -->
+    <path d="M 720 335 Q 780 250 720 150" stroke="#0ea5e9" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="760" y="240" class="label">10. Analytics Reports</text>
+
+    <!-- DATA FLOWS: RESPONDENT <-> SYSTEM -->
+    <!-- 11. Screening Form -->
+    <path d="M 500 530 Q 350 550 250 750" stroke="#22c55e" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="250" y="600" class="label">11. Screening Form</text>
+    
+    <!-- 12. Screening Answers -->
+    <path d="M 220 750 Q 300 650 480 500" stroke="#22c55e" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="330" y="660" class="label">12. Screening Answers</text>
+
+    <!-- 13. Survey Questions -->
+    <path d="M 480 450 L 350 760" stroke="#22c55e" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="400" y="550" class="label">13. Survey Questions</text>
+    
+    <!-- 14. Completed Responses -->
+    <path d="M 280 750 Q 400 600 520 540" stroke="#22c55e" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="430" y="700" class="label">14. Survey Responses</text>
+
+    <!-- DATA FLOWS: SYSTEM <-> AI -->
+    <!-- 16. Prompts -->
+    <path d="M 700 510 Q 800 550 900 750" stroke="#a855f7" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="820" y="600" class="label">16. Prompt Content</text>
+
+    <!-- 17. Generated JSON -->
+    <path d="M 940 750 Q 850 650 720 530" stroke="#a855f7" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="850" y="660" class="label">17. Generated JSON</text>
+
+    <!-- 20. Analysis Data -->
+    <path d="M 700 450 L 850 760" stroke="#a855f7" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="730" y="550" class="label">20. Analysis Data</text>
+
+    <!-- 21. Sentiment/Trends -->
+    <path d="M 980 750 Q 900 600 680 540" stroke="#a855f7" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="870" y="700" class="label">21. Sentiment Results</text>
+
+</svg>

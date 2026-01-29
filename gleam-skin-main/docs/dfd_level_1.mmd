@@ -1,0 +1,55 @@
+graph LR
+    %% Styling
+    classDef process fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#01579b,rx:5,ry:5;
+    classDef entity fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f,rx:0,ry:0;
+    classDef datastore fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100,shape:cylinder;
+
+    %% External Entities
+    Creator["User (Survey Creator)"]:::entity
+    Respondent["Respondent"]:::entity
+    AI["AI Service (Llama/SD)"]:::entity
+
+    %% Processes
+    P1("1.0 Authenticate & Manage Profile"):::process
+    P2("2.0 Design & Build Survey"):::process
+    P3("3.0 Distribute Survey"):::process
+    P4("4.0 Collect & Validate Responses"):::process
+    P5("5.0 Analyze & Report"):::process
+
+    %% Data Stores
+    D1[("D1: User Profiles")]:::datastore
+    D2[("D2: Surveys & Rules")]:::datastore
+    D3[("D3: Responses")]:::datastore
+
+    %% Flows - Authentication
+    Creator -- "1. Credentials" --> P1
+    P1 -- "2. Auth Token / Profile" --> Creator
+    P1 -- "3. Update Profile" --> D1
+    D1 -- "4. User Data" --> P1
+
+    %% Flows - Survey Design (Combined AI and Manual)
+    Creator -- "5. Topic / Rules / Edits" --> P2
+    P2 -- "6. Drafts / Previews" --> Creator
+    P2 -- "7. Generate Request" --> AI
+    AI -- "8. AI Content (Text/Img)" --> P2
+    P2 -- "9. Survey Schema / Qual Rules" --> D2
+    D2 -- "10. Existing Templates" --> P2
+
+    %% Flows - Distribution
+    Creator -- "11. Distribution Config" --> P3
+    P3 -- "12. Survey Links" --> Creator
+    P3 -- "13. Fetch Survey Meta" --> D2
+    
+    %% Flows - Collection (Respondent Interaction)
+    P3 -. "14. Access Link" .-> Respondent
+    Respondent -- "15. Submit Answers" --> P4
+    P4 -- "16. Fetch Validation Rules" --> D2
+    P4 -- "17. Feedback / Next Q" --> Respondent
+    P4 -- "18. Store Responses" --> D3
+
+    %% Flows - Analytics
+    Creator -- "19. Request Report" --> P5
+    D3 -- "20. Fetch Raw Data" --> P5
+    P5 -- "21. NLP Analysis Request" --> AI
+    AI -- "22. Sentiment / Summary" --> P5
+    P5 -- "23. Final Dashboard" --> Creator

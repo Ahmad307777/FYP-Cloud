@@ -1,0 +1,17 @@
+scikit-learn
+joblib
+pandas
+django
+djangorestframework
+django-cors-headers
+huggingface_hub
+python-dotenv
+psycopg2-binary
+bcrypt
+certifi
+pytest
+pytest-django
+pytest-cov
+gunicorn
+dj-database-url
+whitenoise

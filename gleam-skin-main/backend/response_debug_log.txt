@@ -1,0 +1,45 @@
+Critical Create Error: `create()` did not return an object instance.
+Traceback (most recent call last):
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\views\survey_views.py", line 204, in perform_create
+    instance = serializer.save()
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 211, in save
+    assert self.instance is not None, (
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: `create()` did not return an object instance.
+
+Analyze Survey Error: Invalid format specifier ' "Immediate (Week 1)", "action": "Fix reported bugs in..."' for object of type 'str'
+Traceback (most recent call last):
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\views\ai_views.py", line 180, in analyze_survey_view
+    result = analyze_survey_results(survey_title, questions_data, responses_data, api_key)
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\ai_helper.py", line 461, in analyze_survey_results
+    {"phase": "Immediate (Week 1)", "action": "Fix reported bugs in..."},
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format specifier ' "Immediate (Week 1)", "action": "Fix reported bugs in..."' for object of type 'str'
+
+Analyze Survey Error: unhashable type: 'BaseDict'
+Traceback (most recent call last):
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\views\ai_views.py", line 180, in analyze_survey_view
+    result = analyze_survey_results(survey_title, questions_data, responses_data, api_key)
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\ai_helper.py", line 449, in analyze_survey_results
+    counts[opt] = 0
+    ~~~~~~^^^^^
+TypeError: unhashable type: 'BaseDict'
+
+Analyze Survey Error: unhashable type: 'BaseDict'
+Traceback (most recent call last):
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\views\ai_views.py", line 180, in analyze_survey_view
+    result = analyze_survey_results(survey_title, questions_data, responses_data, api_key)
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\ai_helper.py", line 449, in analyze_survey_results
+    counts[opt] = 0
+    ~~~~~~^^^^^
+TypeError: unhashable type: 'BaseDict'
+
+Analyze Survey Error: unhashable type: 'BaseDict'
+Traceback (most recent call last):
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\views\ai_views.py", line 180, in analyze_survey_view
+    result = analyze_survey_results(survey_title, questions_data, responses_data, api_key)
+  File "D:\Survonica-The-intelligent-way-to-create-and-distribute-surveys-main\gleam-skin-main\backend\surveys\ai_helper.py", line 449, in analyze_survey_results
+    counts[opt] = 0
+    ~~~~~~^^^^^
+TypeError: unhashable type: 'BaseDict'
+

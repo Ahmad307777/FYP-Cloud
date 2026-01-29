@@ -1,0 +1,47 @@
+flowchart TD
+    %% Roles/Sections
+    subgraph Onboarding
+        Start((Start)) --> Auth[Login / Signup]
+    end
+
+    subgraph "Survey Creation (AI-Native)"
+        Auth --> MethodSelection{Choose Creation Method}
+        MethodSelection -- "AI Assistant (Voice/Chat)" --> AIChat[Interact with Llama 3.2]
+        AIChat --> AIGen[Generate Questions & Sections]
+        MethodSelection -- "Manual Builder" --> Manual[Manually Define Questions]
+        
+        AIGen --> AIEnhance[AI Audit: Bias & Redundancy Check]
+        Manual --> AIEnhance
+        
+        AIEnhance --> Visuals[AI Generate Logos & Design]
+    end
+
+    subgraph "Configuration & Distribution"
+        Visuals --> Config{Set Requirements}
+        Config --> QualSetup[Setup Qualification Test]
+        Config --> DomainRest[Domain Restriction @namal.edu.pk]
+        Config --> Publish[Publish & Generate Public Link]
+    end
+
+    subgraph "Respondent Journey"
+        Publish --> Access[Respondent Accesses Link]
+        Access --> NeedsQual{Qualification Required?}
+        
+        NeedsQual -- Yes --> TakeTest[Take AI-Generated Screening Test]
+        TakeTest --> ScoreCheck{Passed?}
+        ScoreCheck -- No --> Terminate[End: Disqualified]
+        ScoreCheck -- Yes --> TakeSurvey[Take Main Survey]
+        
+        NeedsQual -- No --> TakeSurvey
+        TakeSurvey --> Submit[Submit Response Data]
+    end
+
+    subgraph "AI Analytics & Audit"
+        Submit --> Audit[Calculate Response Quality Score]
+        Audit --> NLP[AI Sentiment Analysis & Trend Extraction]
+        NLP --> Report[Generate Executive Summary]
+        Report --> Dashboard[Real-time Dashboard & View]
+        Dashboard --> End((Project Objective Met))
+    end
+
+    Terminate --> End

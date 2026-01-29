@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
+    <style>
+        body {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .mermaid {
+            width: 100%;
+            max-width: 1200px;
+            transform: scale(1.1);
+        }
+
+        .title {
+            font-family: sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">Survonica: DFD Level 0 (Context Diagram)</div>
+    <div class="mermaid">
+        flowchart TD
+        %% External Entities
+        Creator["Survey Creator"]
+        Respondent["Respondent"]
+        AI["AI Service (Llama / HuggingFace)"]
+        System(("Survonica System"))
+
+        %% Creator to System
+        Creator -->|"1. Login & User Signup"| System
+        Creator -->|"2. Create Survey (Chatbot/Voice)"| System
+        Creator -->|"3. Define Qualification Test"| System
+        Creator -->|"4. Configure Visuals & Layout"| System
+        Creator -->|"5. Distribute Survey Link"| System
+
+        %% System to Creator
+        System -->|"6. Quality Audit Flags"| Creator
+        System -->|"7. Analytics & Sentiment Dashboard"| Creator
+        System -->|"8. Strategic Roadmap & Insights"| Creator
+
+        %% Respondent to System
+        System -->|"9. Final Survey Form"| Respondent
+        Respondent -->|"10. Conduct Qualification Test"| System
+        Respondent -->|"11. Submit Survey Results"| System
+
+        %% System to AI
+        System -->|"12. Send Prompts & Raw Results"| AI
+        AI -->|"13. Generate Questions (Llama)"| System
+        AI -->|"14. Generate Visuals (Logos/Images)"| System
+        AI -->|"15. Provide Sentiment & Quality Audit"| System
+
+        %% Premium Styling
+        style Creator fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+        style Respondent fill:#f1f8e9,stroke:#2e7d32,stroke-width:2px
+        style AI fill:#fff8e1,stroke:#f57f17,stroke-width:2px
+        style System fill:#ffffff,stroke:#000000,stroke-width:5px
+    </div>
+</body>
+
+</html>

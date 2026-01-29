@@ -1,0 +1,1 @@
+web: gunicorn gleam_backend.wsgi

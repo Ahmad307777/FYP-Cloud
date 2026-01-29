@@ -1,0 +1,370 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Survonica SRS Report</title>
+        <style>
+            body {
+                font-family: "Times New Roman", Times, serif;
+                font-size: 12pt;
+                line-height: 1.5;
+                margin: 0;
+                padding: 0;
+                background: #f0f0f0;
+            }
+            .page {
+                width: 8.5in;
+                min-height: 11in;
+                margin: 1cm auto;
+                padding: 1in;
+                background: white;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            @media print {
+                body { background: none; }
+                .page { margin: 0; box-shadow: none; width: auto; }
+            }
+            h1 { font-size: 24pt; text-align: center; margin-top: 2em; margin-bottom: 1em; }
+            h2 { font-size: 18pt; margin-top: 1.5em; border-bottom: 1px solid #ccc; }
+            h3 { font-size: 14pt; margin-top: 1.2em; }
+            p { text-align: justify; margin-bottom: 1em; }
+            ul { margin-bottom: 1em; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 1em; }
+            td, th { border: 1px solid black; padding: 5px; }
+            .img-container { text-align: center; margin: 2em 0; }
+            img { max-width: 100%; height: auto; }
+            .caption { font-style: italic; font-size: 10pt; color: #555; }
+            .title-page { text-align: center; margin-top: 3in; page-break-after: always; }
+            .toc { page-break-after: always; }
+            a { color: black; text-decoration: none; }
+        </style>
+    </head>
+    <body>
+        <div class="page">
+            <div class="title-page">
+                <h1>Survonica: The Intelligent Way to Create and Distribute Surveys</h1>
+                <p><strong>Software Requirements Specification</strong></p>
+                <p>Generated: 2025-12-31</p>
+                <br><br>
+                <p><strong>Team Members:</strong> Ahmad Mustafa, Abdul Qadeer</p>
+                <p><strong>Supervisor:</strong> Dr. Ali Shahid</p>
+                <p><strong>Namal University, Mianwali</strong></p>
+            </div>
+            
+            <div class="toc"><h2>Table of Contents</h2><ul><li style="margin-left: 0px"><a href="#survonica--the-intelligent-way-to-create-and-distribute-surveys">Survonica: The Intelligent Way to Create and Distribute Surveys</a></li><li style="margin-left: 20px"><a href="#declaration">DECLARATION</a></li><li style="margin-left: 20px"><a href="#abstract">Abstract</a></li><li style="margin-left: 0px"><a href="#chapter-1--introduction">Chapter 1: Introduction</a></li><li style="margin-left: 40px"><a href="#1-1-purpose">1.1 Purpose</a></li><li style="margin-left: 40px"><a href="#1-2-scope">1.2 Scope</a></li><li style="margin-left: 40px"><a href="#1-3-definitions--acronyms--and-abbreviations">1.3 Definitions, Acronyms, and Abbreviations</a></li><li style="margin-left: 40px"><a href="#1-4-references">1.4 References</a></li><li style="margin-left: 40px"><a href="#1-5-overview-of-report-structure">1.5 Overview of Report Structure</a></li><li style="margin-left: 0px"><a href="#chapter-2--system-description">Chapter 2: System Description</a></li><li style="margin-left: 40px"><a href="#2-1-overall-description">2.1 Overall Description</a></li><li style="margin-left: 40px"><a href="#2-2-system-environment">2.2 System Environment</a></li><li style="margin-left: 40px"><a href="#2-3-product-perspective">2.3 Product Perspective</a></li><li style="margin-left: 40px"><a href="#2-4-product-features">2.4 Product Features</a></li><li style="margin-left: 0px"><a href="#chapter-3--analysis-and-design">Chapter 3: Analysis and Design</a></li><li style="margin-left: 40px"><a href="#3-1-functional-requirements">3.1 Functional Requirements</a></li><li style="margin-left: 40px"><a href="#3-2-non-functional-requirements">3.2 Non-Functional Requirements</a></li><li style="margin-left: 40px"><a href="#3-3-system-models">3.3 System Models</a></li><li style="margin-left: 60px"><a href="#3-3-1-dfd-level-0--context-diagram-">3.3.1 DFD Level 0 (Context Diagram)</a></li><li style="margin-left: 60px"><a href="#3-3-2-dfd-level-1">3.3.2 DFD Level 1</a></li><li style="margin-left: 60px"><a href="#3-3-3-use-case-diagram">3.3.3 Use Case Diagram</a></li><li style="margin-left: 60px"><a href="#3-3-3-entity-relationship-diagram--erd-">3.3.3 Entity Relationship Diagram (ERD)</a></li><li style="margin-left: 60px"><a href="#3-3-4-sequence-diagram--survey-creation-">3.3.4 Sequence Diagram (Survey Creation)</a></li><li style="margin-left: 60px"><a href="#3-3-5-activity-diagram--distribution-flow-">3.3.5 Activity Diagram (Distribution Flow)</a></li><li style="margin-left: 40px"><a href="#3-4-external-interface-requirements">3.4 External Interface Requirements</a></li><li style="margin-left: 60px"><a href="#3-4-1-user-interfaces">3.4.1 User Interfaces</a></li><li style="margin-left: 60px"><a href="#3-4-2-hardware-interfaces">3.4.2 Hardware Interfaces</a></li><li style="margin-left: 60px"><a href="#3-4-3-software-interfaces">3.4.3 Software Interfaces</a></li><li style="margin-left: 60px"><a href="#3-4-4-communication-interfaces">3.4.4 Communication Interfaces</a></li><li style="margin-left: 40px"><a href="#3-5-constraints-and-limitations">3.5 Constraints and Limitations</a></li><li style="margin-left: 40px"><a href="#3-6-assumptions-and-dependencies">3.6 Assumptions and Dependencies</a></li><li style="margin-left: 0px"><a href="#chapter-4--project-status">Chapter 4: Project Status</a></li><li style="margin-left: 40px"><a href="#4-1-completed-work">4.1 Completed Work</a></li><li style="margin-left: 40px"><a href="#4-2-conclusion">4.2 Conclusion</a></li><li style="margin-left: 0px"><a href="#references">References</a></li></ul></div>
+            
+            <h1 id="survonica--the-intelligent-way-to-create-and-distribute-surveys" >Survonica: The Intelligent Way to Create and Distribute Surveys</h1>
+<p><b>Final Year Project Report</b></p>
+<p><b>Department of Computer Science</b></p>
+<p><b>Namal University, Mianwali</b></p>
+<p><b>2025-2026</b></p>
+<p><b>Team Members:</b></p>
+<ul>
+<li>  <b>Ahmad Mustafa</b> (Full Stack / AI)</li>
+<li>  <b>Abdul Qadeer</b> (Frontend)</li>
+</ul>
+<p><b>Supervisors:</b></p>
+<ul>
+<li>  <b>Supervisor:</b> Dr. Ali Shahid</li>
+<li>  <b>Co-Supervisor:</b> Miss Sonia Safeer</li>
+</ul>
+<p><i>A project submitted in partial fulfilment of the requirements for the degree of Bachelor of Science in Computer Science.</i></p>
+<p><b>Namal University, 30-KM, Talagang Road, Mianwali, Pakistan.</b></p>
+<p><a href="http://www.namal.edu.pk">www.namal.edu.pk</a></p>
+<p>---</p>
+<h2 id="declaration" >DECLARATION</h2>
+<p>The project report titled "<b>Survonica: The Intelligent Way to Create and Distribute Surveys</b>" is submitted in partial fulfillment of the degree of Bachelors of Science in Computer Science, to the Department of Computer Science at Namal University, Mianwali, Pakistan.</p>
+<p>It is declared that this is an original work done by the team members listed below, under the guidance of our supervisor "<b>Dr. Ali Shahid</b>". No part of this project and its report is plagiarized from anywhere, and any help taken from previous work is cited properly. No part of the work reported here is submitted in fulfillment of requirement for any other degree/ qualification in any institute of learning.</p>
+<table>
+<tr><td>Team Members</td><td>Signatures</td></tr>
+<tr></tr>
+<tr><td>Ahmad Mustafa</td><td>____________________</td></tr>
+<tr><td>Abdul Qadeer</td><td>____________________</td></tr>
+</table>
+<p><b>Supervisor:</b> Dr. Ali Shahid</p>
+<p><b>Signatures with date:</b></p>
+<p>__________________________</p>
+<p>__________________________</p>
+<p>---</p>
+<h2 id="abstract" >Abstract</h2>
+<p>Survonica is a smart web platform that fixes the problems with old survey tools like Google Forms. Traditional tools are manual and often lead to boring or repetitive questions. Survonica uses modern AI (Llama 3.2) to help users build better surveys faster.</p>
+<p>Our system lets you <b>talk to an AI</b> to create a survey, uses <b>Voice Commands</b> so you don't have to type, and automatically finds <b>duplicate questions</b>. It features a powerful <b>Analytics Dashboard</b> that doesn't just show charts—it reads the text responses and tells you what people actually feel (Sentiment Analysis) and gives you advice on how to improve. This project combines a modern website (React) with a smart backend (Django + AI) to make surveys easy and intelligent.</p>
+<p>---</p>
+<h1 id="chapter-1--introduction" style="page-break-before: always;">Chapter 1: Introduction</h1>
+<p>Surveys are a vital tool for businesses, schools, and researchers to collect information, but the traditional process of creating them is often manual, difficult, and time-consuming. Users frequently struggle with formatting, spend hours writing questions, and inadvertently introduce errors like duplicate or confusing questions. This manual approach leads to "Survey Fatigue" and often results in low-quality data because there involves no smart system to assist the user.</p>
+<p>To address these challenges, we chose this project to leverage modern Artificial Intelligence (AI) to automate and simplify the entire process. The main goal of <b>Survonica</b> is to build a smart web application where anyone can create a professional survey in minutes without technical skills. By replacing complex forms with an intelligent "Chatbot" and Voice Assistant, Survonica allows users to build surveys simply by talking or typing in plain English. The system acts like a smart teacher, automatically writing questions, checking for bias, and filtering out "fake" or lazy responses to ensure high-quality results.</p>
+<p>To achieve these goals, Survonica provides a suite of powerful features. The <b>AI Chat Builder</b> and <b>Voice Commands</b> allow for hands-free, natural survey creation, while <b>Qualification Tests</b> enable users to screen respondents (e.g., "Are you over 18?") before they enter the survey. Once responses are collected, the <b>Advanced Analytics</b> engine uses AI to find sentiments and key trends in text answers, and <b>Quality Control</b> tools ensure that questions are unbiased and data is genuine.</p>
+<h3 id="1-1-purpose" >1.1 Purpose</h3>
+<p>The specific purpose of this SRS document is to define the functional and non-functional requirements for <b>Survonica</b>, an AI-powered survey automation platform. In the current industrial context, organizations struggle with the manual, error-prone process of designing and auditing surveys, which leads to operational inefficiencies and data fatigue.</p>
+<p>This document clearly outlines how Survonica aims to solve these problems by integrating Generative AI for automated survey creation and response auditing. It serves as a definitive guide for developers, stakeholders, and supervisors to understand the system's objectives: to reduce survey creation time, enhance data quality through redundancy detection, and provide actionable, automated insights for decision-making.</p>
+<h3 id="1-2-scope" >1.2 Scope</h3>
+<p>The scope of <b>Survonica</b> is to allow anyone to create professional surveys without needing technical skills. This project focuses on three main areas:</p>
+<p><b>Goals:</b></p>
+<ul>
+<li>  <b>Efficiency (Faster Creation):</b> To drastically reduce the time and effort needed to design surveys. Users should be able to create a full survey in minutes using AI, rather than spending hours manually formatting questions.</li>
+<li>  <b>Data Reliability (Better Quality):</b> To automatically prevent common human errors like biased or duplicate questions, and to filter out fake answers so the final data is trustworthy.</li>
+<li>  <b>Accessible Intelligence (Easier Analysis):</b> To make advanced data analysis available to everyone. The goal is to instantly turn raw text answers into clear, actionable, and easy-to-understand reports without needing a data scientist.</li>
+</ul>
+<p><b>Key Functionalities:</b></p>
+<ul>
+<li>  <b>Fully Conversational AI Assistant:</b> A smart, trained survey assistant that talks to you like a human. It proactive asks about demographic questions and helps organize surveys into <b>Sections</b> (multiple pages). It even <b>Automatically Generates Options</b> for your questions so you don't have to type them manually.</li>
+<li>  <b>Advanced Editable Templates:</b> Users can choose strict, professional templates that are editable section-by-section, allowing for precise control over the survey structure.</li>
+<li>  <b>Visual Customization (AI Images):</b> The system can generate pertinent <b>Logos</b> and unique images for <b>Page-by-Page</b> visualization using AI, making every survey look custom-made.</li>
+<li>  <b>Screening Tests:</b> It makes sure only the right people (e.g., specific age groups) answer your survey.</li>
+<li>  <b>Fake Answer Security:</b> It finds and removes answers that look fake or lazy.</li>
+<li>  <b>Advanced Analytics:</b> It automatically analyzes all text answers to uncover hidden trends and human feelings (Sentiment Analysis) that simple charts miss.</li>
+</ul>
+<p><b>Industrial Applications:</b></p>
+<p>This system is built for the real world. <b>Marketing Teams</b> can use it to understand what customers want. <b>HR Departments</b> can use it to anonymously check if employees are happy. <b>Researchers</b> can use it to collect clean data without spending weeks analyzing it manually.</p>
+<h3 id="1-3-definitions--acronyms--and-abbreviations" >1.3 Definitions, Acronyms, and Abbreviations</h3>
+<ul>
+<li>  <b>AI (Artificial Intelligence):</b> Computer programs that can think and learn like humans.</li>
+<li>  <b>API (Application Programming Interface):</b> A bridge that allows different software (like our Frontend and Backend) to talk to each other.</li>
+<li>  <b>GDPR (General Data Protection Regulation):</b> International rules about protecting user privacy and data.</li>
+<li>  <b>JSON (JavaScript Object Notation):</b> A standard format used to send data (like questions and answers) between the server and the website.</li>
+<li>  <b>LLM (Large Language Model):</b> A specialized AI trained on vast amounts of text to understand and generate human language (e.g., Llama 3.2).</li>
+<li>  <b>NLP (Natural Language Processing):</b> Technology that helps computers understand, interpret, and manipulate human language (used for Sentiment Analysis).</li>
+<li>  <b>REST (Representational State Transfer):</b> The architectural style we use for our backend web services.</li>
+<li>  <b>SPA (Single Page Application):</b> A type of website (built with React) that loads once and feels like a fast, smooth app without reloading pages.</li>
+<li>  <b>SRS (Software Requirements Specification):</b> This document, which acts as the official blueprint for the software.</li>
+<li>  <b>STT (Speech-to-Text):</b> Technology that converts spoken words into written text (used for our Voice Assistant).</li>
+</ul>
+<h3 id="1-4-references" >1.4 References</h3>
+<p>1.  [1] Meta AI, "Llama 3.2 Model Card," 2024. [Online]. Available: https://ai.meta.com/llama/</p>
+<p>2.  [2] Django Software Foundation, "Django Documentation," 2024. [Online]. Available: https://docs.djangoproject.com/</p>
+<p>3.  [3] IEEE, "IEEE 830-1998 Recommended Practice for Software Requirements Specifications," IEEE Standards Association.</p>
+<p>4.  [4] Porter, S. R., et al., "Survey Fatigue and the Decline of Response Rates," <i>Journal of Survey Statistics</i>, 2004.</p>
+<p>5.  [5] Vaswani, A., et al., "Attention Is All You Need," <i>Advances in Neural Information Processing Systems</i>, 2017.</p>
+<p>6.  [6] Medhat, W., et al., "Sentiment Analysis Algorithms and Applications: A Survey," <i>Ain Shams Engineering Journal</i>, 2014.</p>
+<h3 id="1-5-overview-of-report-structure" >1.5 Overview of Report Structure</h3>
+<p>This report is organized into four main chapters to help you understand the project clearly:</p>
+<ul>
+<li>  <b>Chapter 1 (Introduction):</b> You are reading this now. It explains "Why" we built this project and "What" problems it solves.</li>
+<li>  <b>Chapter 2 (System Description):</b> This chapter explains "How" we built it. It describes the technology (like React and Python) and the main features of the website.</li>
+<li>  <b>Chapter 3 (Analysis and Design):</b> This chapter goes into detail about the rules. It lists every single feature the system must have (like Voice Commands and Analytics) and shows diagrams of how data flows.</li>
+<li>  <b>Chapter 4 (Project Status):</b> This chapter tells you "Where" we are now. It lists what is finished and what we plan to do next.</li>
+</ul>
+<p>---</p>
+<h1 id="chapter-2--system-description" style="page-break-before: always;">Chapter 2: System Description</h1>
+<p>The evolution of survey methodologies has shifted significantly from manual paper-based forms (Web 1.0) to digital tools like SurveyMonkey (Web 2.0). However, recent literature indicates that "Survey Fatigue" and data quality remain critical issues due to poor design [4].</p>
+<p>Current academic research highlights the transformative potential of <b>Large Language Models (LLMs)</b>. The introduction of the Transformer architecture by Vaswani et al. [5] revolutionized Natural Language Processing (NLP), enabling machines to understand context and generate human-like text. Models like <b>Llama 3.2</b> [1] allow for "Generative Survey Design," where the AI acts as a domain expert to construct surveys, a capability missing in traditional tools. Furthermore, modern <b>Sentiment Analysis</b> using huge datasets provides deeper insights than lexicon-based approaches [6]. This project leverages involves these advancements to create a system that addresses the limitations of existing manual tools.</p>
+<h3 id="2-1-overall-description" >2.1 Overall Description</h3>
+<p>The system is designed for a broad range of users, from <b>Student Researchers</b> with limited technical skills to <b>HR Managers</b> needing quick employee feedback.</p>
+<ul>
+<li>  <b>User Characteristics:</b> Users are expected to have basic computer literacy but do not need data science expertise.</li>
+<li>  <b>Assumptions:</b> It is assumed users have a stable internet connection and a modern web browser.</li>
+<li>  <b>Constraints:</b> The system relies on the availability of the Hugging Face API for AI tasks.</li>
+</ul>
+<h3 id="2-2-system-environment" >2.2 System Environment</h3>
+<p>The project requires the following environments to function:</p>
+<ul>
+<li>  <b>Software Interface:</b> A modern web browser (Chrome, Edge, Firefox).</li>
+<li>  <b>Hardware Interface:</b> Any device with internet access (Laptop, Tablet).</li>
+<li>  <b>Development Environment:</b></li>
+<li>  <b>Frontend:</b> React (SPA) with Tailwind CSS.</li>
+<li>  <b>Backend:</b> Python Django REST Framework.</li>
+<li>  <b>AI Service:</b> Hosted Inference API (Llama 3.2, Stable Diffusion).</li>
+<li>  <b>Database:</b> MongoDB Atlas (NoSQL).</li>
+</ul>
+<h3 id="2-3-product-perspective" >2.3 Product Perspective</h3>
+<p>Survonica operates in a domain currently dominated by tools like <b>Google Forms</b> and <b>SurveyMonkey</b>.</p>
+<ul>
+<li>  <b>Relation to Existing Systems:</b> Like these tools, Survonica allows for survey creation and distribution.</li>
+<li>  <b>Gap Analysis:</b> Literature shows that while existing tools offer "Digital Entry," they lack "Intelligent Design." They require the user to formulate every question. Survonica fills this gap by introducing an <b>AI Co-pilot</b> that generates structure, questions, and visual assets, solving the "cold start" problem identified in recent UX research.</li>
+</ul>
+<h3 id="2-4-product-features" >2.4 Product Features</h3>
+<p>1.  <b>Fully Conversational AI Assistant:</b> Generates survey structures, questions, and options via chat.</p>
+<p>2.  <b>Advanced Editable Templates:</b> Professional, section-by-section editable layouts.</p>
+<p>3.  <b>Visual Customization:</b> AI-generated logos and page-specific images.</p>
+<p>4.  <b>Screening Tests:</b> Demographic and criteria-based respondent filtering.</p>
+<p>5.  <b>Advanced Analytics:</b> Deep sentiment analysis and trend discovery.</p>
+<p>6.  <b>Response Audit:</b> Automated detection of low-quality or fake data.</p>
+<p>---</p>
+<h1 id="chapter-3--analysis-and-design" style="page-break-before: always;">Chapter 3: Analysis and Design</h1>
+<p>This chapter details the system's architecture and design. We utilized an <b>Agile Software Process Model</b> for development. This iterative approach allowed us to build the core survey engine first, then incrementally add advanced AI features like the Chatbot and Analytics, refining them based on constant testing and feedback.</p>
+<h3 id="3-1-functional-requirements" >3.1 Functional Requirements</h3>
+<p><b>1. Authentication & User Management</b></p>
+<ul>
+<li>  <b>FR-01:</b> The system shall allow users to <b>Sign Up and Log In</b> securely.</li>
+<li>  <b>FR-02:</b> The system shall store user sessions to keep them logged in.</li>
+</ul>
+<p><b>2. Smart Survey Creation</b></p>
+<ul>
+<li>  <b>FR-03:</b> The system shall provide a <b>Voice Assistant</b> (Web Speech API) to create surveys by talking.</li>
+<li>  <b>FR-04:</b> The system shall provide a <b>Conversational AI Chatbot</b> (Llama 3.2) to generate questions, sections, and options.</li>
+<li>  <b>FR-05:</b> The system shall allow <b>Manual Creation</b> where users can add/edit questions and choose types (Text, Multiple Choice).</li>
+<li>  <b>FR-06:</b> The system shall allow <b>Visual Customization</b>, saving logos and design settings.</li>
+</ul>
+<p><b>3. Advanced AI Features</b></p>
+<ul>
+<li>  <b>FR-07:</b> The system shall perform <b>Redundancy Detection</b> to merge duplicate questions.</li>
+<li>  <b>FR-08:</b> The system shall perform <b>Bias Detection</b> to ensure neutral question phrasing.</li>
+<li>  <b>FR-09:</b> The system shall automatically <b>Generate Options</b> for questions.</li>
+</ul>
+<p><b>4. Qualification and Screening</b></p>
+<ul>
+<li>  <b>FR-10:</b> The system shall allow users to create <b>Qualification Tests</b> to screen respondents.</li>
+<li>  <b>FR-11:</b> The system shall allow <b>Domain Restriction</b> (e.g., only allow emails from `@namal.edu.pk`).</li>
+</ul>
+<p><b>5. Distribution</b></p>
+<ul>
+<li>  <b>FR-12:</b> The system shall generate unique <b>Public Links</b> for survey distribution.</li>
+<li>  <b>FR-13:</b> The system shall allow sending surveys via <b>Email</b>.</li>
+</ul>
+<p><b>6. Response Collection & Audit</b></p>
+<ul>
+<li>  <b>FR-14:</b> The system shall collect and store responses in <b>MongoDB</b>.</li>
+<li>  <b>FR-15:</b> The system shall perform <b>Response Auditing</b>, calculating a "Quality Score" (0-100) for every answer to detect fakes.</li>
+</ul>
+<p><b>7. Analytics & Insights</b></p>
+<ul>
+<li>  <b>FR-16:</b> The system shall display a real-time <b>Dashboard</b> with response counts, completion rates, and average time.</li>
+<li>  <b>FR-17:</b> The system shall perform <b>Sentiment Analysis</b> on open-text responses, classifying them as Positive, Neutral, or Negative.</li>
+<li>  <b>FR-18:</b> The system shall generate an <b>Executive Summary</b> that provides a high-level text overview of the entire survey results.</li>
+<li>  <b>FR-19:</b> The system shall extract <b>Key Insights</b> and <b>Hidden Trends</b> from the data automatically.</li>
+<li>  <b>FR-20:</b> The system shall provide <b>Improvement Suggestions</b> to help users act on the negative feedback received.</li>
+</ul>
+<h3 id="3-2-non-functional-requirements" >3.2 Non-Functional Requirements</h3>
+<p>1.  <b>Performance:</b> The React-based <b>Single Page Application (SPA)</b> architecture ensures instant page loads (< 1 second) by only fetching necessary data.</p>
+<p>2.  <b>Scalability:</b> The <b>MongoDB</b> database is designed to handle unstructured survey data and can scale to thousands of responses without schema changes.</p>
+<p>3.  <b>Security:</b></p>
+<ul>
+<li>  Passwords are hashed using <b>bcrypt</b>.</li>
+<li>  All API communication is encrypted via <b>HTTPS</b>.</li>
+<li>  AI Models run in a secure environment (Hugging Face Inference).</li>
+</ul>
+<p>4.  <b>Reliability:</b> The system uses atomic database updates to ensure the "Response Counter" is always accurate even with high traffic.</p>
+<p>5.  <b>Maintainability:</b> The backend is built with <b>Django REST Framework</b>, ensuring clean separation of logic and easy future updates.</p>
+<h3 id="3-3-system-models" >3.3 System Models</h3>
+<h4 id="3-3-1-dfd-level-0--context-diagram-" >3.3.1 DFD Level 0 (Context Diagram)</h4>
+<p><b>Description:</b> High-level system overview showing interactions between the Creator, Respondent, and AI Service (Slide-Ready Format).</p>
+<div class="img-container"><img src="images/dfd_level_0.svg" alt="DFD Level 0 Context Diagram"><p class="caption">DFD Level 0 Context Diagram</p></div>
+<h4 id="3-3-2-dfd-level-1" >3.3.2 DFD Level 1</h4>
+<p><b>Description:</b> Detailed process flow highlighting the Survey Creation sequence (Auth -> Create -> Redundancy/Visuals -> Distribute -> Analyze).</p>
+<div class="img-container"><img src="images/dfd_level_1.png" alt="DFD Level 1 Diagram"><p class="caption">DFD Level 1 Diagram</p></div>
+<h4 id="3-3-3-use-case-diagram" >3.3.3 Use Case Diagram</h4>
+<p>```mermaid</p>
+<p>usecaseDiagram</p>
+<p>actor "User" as U</p>
+<p>actor "AI System" as AI</p>
+<p>package "Survonica System" {</p>
+<p>usecase "Login / Signup" as UC1</p>
+<p>usecase "Create via Chat/Voice" as UC2</p>
+<p>usecase "Edit Survey" as UC3</p>
+<p>usecase "Distribute Survey" as UC4</p>
+<p>usecase "View AI Analytics" as UC5</p>
+<p>}</p>
+<p>U --> UC1</p>
+<p>U --> UC2</p>
+<p>U --> UC3</p>
+<p>U --> UC4</p>
+<p>U --> UC5</p>
+<p>UC2 -.-> AI : Include</p>
+<p>UC5 -.-> AI : Include</p>
+<p>```</p>
+<h4 id="3-3-3-entity-relationship-diagram--erd-" >3.3.3 Entity Relationship Diagram (ERD)</h4>
+<p>```mermaid</p>
+<p>erDiagram</p>
+<p>USER ||--o{ SURVEY : creates</p>
+<p>SURVEY ||--|{ QUESTION : contains</p>
+<p>SURVEY ||--o{ RESPONSE : collects</p>
+<p>RESPONSE ||--|{ ANSWER : contains</p>
+<p>USER {</p>
+<p>string email</p>
+<p>string password_hash</p>
+<p>}</p>
+<p>SURVEY {</p>
+<p>string title</p>
+<p>string status</p>
+<p>boolean branding</p>
+<p>}</p>
+<p>QUESTION {</p>
+<p>string text</p>
+<p>string type</p>
+<p>boolean is_redundant</p>
+<p>}</p>
+<p>RESPONSE {</p>
+<p>date submitted_at</p>
+<p>float quality_score</p>
+<p>boolean is_fake</p>
+<p>}</p>
+<p>```</p>
+<h4 id="3-3-4-sequence-diagram--survey-creation-" >3.3.4 Sequence Diagram (Survey Creation)</h4>
+<p>```mermaid</p>
+<p>sequenceDiagram</p>
+<p>participant User</p>
+<p>participant Frontend</p>
+<p>participant Backend</p>
+<p>participant AI</p>
+<p>User->>Frontend: Speaks "Create a feedback survey"</p>
+<p>Frontend->>Backend: Sends Text from Speech</p>
+<p>Backend->>AI: Prompts Llama 3.2</p>
+<p>AI->>AI: Generates Questions & Sections</p>
+<p>AI-->>Backend: Returns Survey JSON</p>
+<p>Backend->>Frontend: Returns Draft Survey</p>
+<p>Frontend->>User: Shows Editable Survey</p>
+<p>```</p>
+<h4 id="3-3-5-activity-diagram--distribution-flow-" >3.3.5 Activity Diagram (Distribution Flow)</h4>
+<p>```mermaid</p>
+<p>flowchart LR</p>
+<p>Start((Start)) --> Draft[Draft Survey]</p>
+<p>Draft --> QC{Quality Check?}</p>
+<p>QC -- Issues Found --> Fix[AI Fixes Bias]</p>
+<p>Fix --> Draft</p>
+<p>QC -- Passed --> Publish[Publish Survey]</p>
+<p>Publish --> Dist[Distribute via Email/Link]</p>
+<p>Dist --> Collect[Collect Responses]</p>
+<p>Collect --> End((End))</p>
+<p>```</p>
+<h3 id="3-4-external-interface-requirements" >3.4 External Interface Requirements</h3>
+<h4 id="3-4-1-user-interfaces" >3.4.1 User Interfaces</h4>
+<p>The system uses a <b>Single Page Application (SPA)</b> interface built with <b>React</b>. It features a "Dark Mode" aesthetic with "Glassmorphism" effects for a modern feel. The layout is responsive, adapting to both desktop and tablet screens.</p>
+<h4 id="3-4-2-hardware-interfaces" >3.4.2 Hardware Interfaces</h4>
+<ul>
+<li>  <b>Client:</b> Any internet-enabled device with a screen and optional microphone for Voice commands.</li>
+<li>  <b>Server:</b> Cloud-based Virtual Machine (hosting Django) with access to high-performance GPUs (via Hugging Face API) for AI inference.</li>
+</ul>
+<h4 id="3-4-3-software-interfaces" >3.4.3 Software Interfaces</h4>
+<ul>
+<li>  <b>Django REST Framework:</b> For handling API requests.</li>
+<li>  <b>MongoDB Atlas:</b> For NoSQL data storage.</li>
+<li>  <b>Hugging Face Inference API:</b> For accessing Large Language Models.</li>
+</ul>
+<h4 id="3-4-4-communication-interfaces" >3.4.4 Communication Interfaces</h4>
+<ul>
+<li>  <b>HTTPS:</b> All data transfer occurs over secure HTTP channels.</li>
+<li>  <b>JSON:</b> The standard data format for all API communication.</li>
+</ul>
+<h3 id="3-5-constraints-and-limitations" >3.5 Constraints and Limitations</h3>
+<ul>
+<li>  <b>API Usage Limits:</b> Heavy reliance on external AI APIs means we are subject to their rate limits and potential costs.</li>
+<li>  <b>Internet Dependency:</b> The system requires an active internet connection; there is no offline mode.</li>
+</ul>
+<h3 id="3-6-assumptions-and-dependencies" >3.6 Assumptions and Dependencies</h3>
+<ul>
+<li>  <b>Assumption:</b> Users will speak clearly when using Voice commands.</li>
+<li>  <b>Assumption:</b> Browser supports modern Web Speech API.</li>
+<li>  <b>Dependency:</b> Continuous availability of the Hugging Face Inference API.</li>
+</ul>
+<p>---</p>
+<h1 id="chapter-4--project-status" style="page-break-before: always;">Chapter 4: Project Status</h1>
+<p>We have successfully built the core system and the advanced AI features.</p>
+<h3 id="4-1-completed-work" >4.1 Completed Work</h3>
+<ul>
+<li>  ✅ <b>Website & Server:</b> Full React and Django setup is working.</li>
+<li>  ✅ <b>Voice & Chat:</b> The Voice Assistant is fully functional.</li>
+<li>  ✅ <b>Analytics Engine:</b> The "Analyze with AI" button works creates detailed reports.</li>
+<li>  ✅ <b>Quality Tools:</b> Redundancy and Bias checks are working.</li>
+</ul>
+<h3 id="4-2-conclusion" >4.2 Conclusion</h3>
+<p>Survonica is no longer just an idea; it is a working "Intelligent" platform. By moving beyond simple forms and adding Voice, Chat, and Deep Analytics, we have created a tool that saves time and improves data quality for everyone.</p>
+<p>---</p>
+<h1 id="references" style="page-break-before: always;">References</h1>
+<p>1.  <b>Llama 3.2:</b> Developed by Meta AI for advanced language understanding.</p>
+<p>2.  <b>Stable Diffusion:</b> Used for generating high-quality images.</p>
+<p>3.  <b>React & Django:</b> The industry-standard tools we used to build the application.</p>
+
+        </div>
+    </body>
+    </html>
+    

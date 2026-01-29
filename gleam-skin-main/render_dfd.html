@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 40px; background: white; }
+        .container { margin-bottom: 500px; padding: 20px; border: 1px solid #eee; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <div id="level0-container" class="container">
+        <h1>DFD Level 0: Context Diagram</h1>
+        <div class="mermaid">
+graph TD
+    %% External Entities
+    Creator["Survey Creator"]
+    Respondent["Respondent"]
+    AI_Service["AI Service (Llama/SD)"]
+
+    %% Main Process
+    System(("(0) <br/> Survonica <br/> System"))
+
+    %% Functional Flows (Creator)
+    Creator -- "Login Request" --> System
+    System -- "Session Token" --> Creator
+    Creator -- "Voice Command (Create)" --> System
+    Creator -- "Chat Prompt (Edit)" --> System
+    System -- "Survey Drafts" --> Creator
+    Creator -- "Visual Specs (Logo/Colors)" --> System
+    System -- "Redundancy Alerts" --> Creator
+    Creator -- "Email Distribution List" --> System
+    System -- "Live Public Link" --> Creator
+    System -- "Sentiment Analytics Report" --> Creator
+    System -- "Improvement Suggestions" --> Creator
+
+    %% Functional Flows (Respondent)
+    System -- "Qualification Test Form" --> Respondent
+    Respondent -- "Test Answers" --> System
+    System -- "Survey Questions" --> Respondent
+    Respondent -- "Response Data" --> System
+    System -- "Submission Confirmation" --> Respondent
+
+    %% Functional Flows (AI)
+    System -- "Natural Language Prompt" --> AI_Service
+    AI_Service -- "Structured Survey JSON" --> System
+    System -- "Image Generation Parameters" --> AI_Service
+    AI_Service -- "Graphic Assets (PNG/SVG)" --> System
+    System -- "Response Text for NLP" --> AI_Service
+    AI_Service -- "Sentiment & Trend Data" --> System
+        </div>
+    </div>
+
+    <div id="level1-container" class="container">
+        <h1>DFD Level 1: Process Decomposition</h1>
+        <div class="mermaid">
+graph LR
+    %% External Entities
+    Creator["Creator"]
+    Res["Respondent"]
+    AI["AI Service"]
+
+    %% Data Stores
+    D1[("D1: User Records")]
+    D2[("D2: Survey Data")]
+    D3[("D3: Responses")]
+    D4[("D4: Analytics")]
+
+    %% Processes
+    P1["(1.0) Identity <br/> Mgmt"]
+    P2["(2.0) AI Design <br/> Engine"]
+    P3["(3.0) Screening <br/> Setup"]
+    P4["(4.0) Distribution <br/> Layer"]
+    P5["(5.0) Response <br/> Collector"]
+    P6["(6.0) AI Analytics <br/> Engine"]
+
+    %% Process 1 (Auth)
+    Creator -- "Credentials" --> P1
+    P1 -- "User Data" --> D1
+    D1 -- "Verified Info" --> P1
+    P1 -- "Auth Token" --> Creator
+
+    %% Process 2 (Design)
+    Creator -- "Voice/Chat Inputs" --> P2
+    P2 -- "Prompt" --> AI
+    AI -- "Survey JSON" --> P2
+    P2 -- "Drafts" --> Creator
+    P2 -- "Survey Schema" --> D2
+
+    %% Process 3 (Screening)
+    Creator -- "Qual Rules" --> P3
+    P3 -- "Test Specs" --> D2
+
+    %% Process 4 (Dist)
+    Creator -- "Email List" --> P4
+    D2 -- "Survey Metatdata" --> P4
+    P4 -- "Public Links" --> Creator
+    P4 -- "Link Access" --> Res
+
+    %% Process 5 (Engine)
+    Res -- "QC Answers" --> P5
+    D2 -- "Validation Logic" --> P5
+    P5 -- "Survey Questions" --> Res
+    Res -- "Completed Response" --> P5
+    P5 -- "Clean Data" --> D3
+
+    %% Process 6 (Analysis)
+    Creator -- "Report Request" --> P6
+    D3 -- "Raw Text" --> P6
+    P6 -- "NLP Task" --> AI
+    AI -- "Results" --> P6
+    P6 -- "Insights" --> D4
+    P6 -- "Final Reports" --> Creator
+        </div>
+    </div>
+</body>
+</html>

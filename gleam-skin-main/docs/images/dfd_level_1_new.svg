@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+    <style>
+        .label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; font-weight: 500; fill: #334155; }
+        .node-label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #0f172a; text-anchor: middle; }
+        .arrow { stroke-width: 2; fill: none; stroke: #64748b; }
+        .arrow-head { fill: #64748b; }
+        .bg-white { fill: #ffffff; }
+        .process { stroke-width: 3; fill: #f8fafc; stroke: #0ea5e9; }
+        .entity { stroke-width: 3; rx: 8; ry: 8; fill: #f1f5f9; stroke: #475569; }
+        .datastore { stroke-width: 3; fill: #fefce8; stroke: #eab308; }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" class="arrow-head"/>
+        </marker>
+    </defs>
+
+    <rect width="100%" height="100%" class="bg-white" />
+
+    <!-- External Entities -->
+    <rect x="50" y="450" width="120" height="80" class="entity" />
+    <text x="110" y="495" class="node-label">Creator</text>
+
+    <rect x="650" y="50" width="120" height="80" class="entity" />
+    <text x="710" y="95" class="node-label">Respondent</text>
+
+    <rect x="1230" y="450" width="120" height="80" class="entity" />
+    <text x="1290" y="495" class="node-label">AI Service</text>
+
+    <!-- Processes -->
+    <circle cx="350" cy="200" r="60" class="process" />
+    <text x="350" y="195" class="node-label">1.0</text>
+    <text x="350" y="215" class="node-label">Auth</text>
+
+    <circle cx="350" cy="500" r="60" class="process" />
+    <text x="350" y="495" class="node-label">2.0</text>
+    <text x="350" y="515" class="node-label">AI Builder</text>
+
+    <circle cx="350" cy="800" r="60" class="process" />
+    <text x="350" y="795" class="node-label">3.0</text>
+    <text x="350" y="815" class="node-label">Screening</text>
+
+    <circle cx="1000" cy="200" r="60" class="process" />
+    <text x="1000" y="195" class="node-label">4.0</text>
+    <text x="1000" y="215" class="node-label">Distribute</text>
+
+    <circle cx="1000" cy="500" r="60" class="process" />
+    <text x="1000" y="495" class="node-label">5.0</text>
+    <text x="1000" y="515" class="node-label">Response QC</text>
+
+    <circle cx="1000" cy="800" r="60" class="process" />
+    <text x="1000" y="795" class="node-label">6.0</text>
+    <text x="1000" y="815" class="node-label">Analytics</text>
+
+    <!-- Data Stores -->
+    <path d="M 600 200 L 800 200 M 600 250 L 800 250" class="datastore" />
+    <text x="700" y="235" class="node-label">D1: Users</text>
+
+    <path d="M 600 500 L 800 500 M 600 550 L 800 550" class="datastore" />
+    <text x="700" y="535" class="node-label">D2: Surveys</text>
+
+    <path d="M 600 800 L 800 800 M 600 850 L 800 850" class="datastore" />
+    <text x="700" y="835" class="node-label">D3: Responses</text>
+
+    <!-- FLOWS -->
+    <!-- Creator to Auth -->
+    <path d="M 120 450 Q 150 200 290 200" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="130" y="280" class="label">Credentials</text>
+
+    <!-- Auth to D1 -->
+    <path d="M 410 200 L 600 220" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="480" y="210" class="label">User Rec</text>
+
+    <!-- Creator to AI Builder -->
+    <path d="M 170 500 L 290 500" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="180" y="490" class="label">Commands</text>
+
+    <!-- AI Builder to AI Service -->
+    <path d="M 410 500 Q 800 400 1230 480" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="800" y="410" class="label">Prompts</text>
+
+    <!-- AI Service to AI Builder -->
+    <path d="M 1230 500 Q 800 600 410 520" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="800" y="580" class="label">Gen Qs/JSON</text>
+
+    <!-- AI Builder to D2 -->
+    <path d="M 410 515 L 600 520" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="480" y="510" class="label">Save Survey</text>
+
+    <!-- Creator to Screening -->
+    <path d="M 120 530 Q 150 800 290 800" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="130" y="730" class="label">Test Rules</text>
+
+    <!-- Screening to D2 -->
+    <path d="M 410 800 L 600 550" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="480" y="720" class="label">Qual Specs</text>
+
+    <!-- Distribute to D2 (Update) -->
+    <path d="M 940 200 L 800 510" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="880" y="300" class="label">Pub Status</text>
+
+    <!-- Respondent to QC -->
+    <path d="M 710 130 L 1000 440" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="910" y="250" class="label">Answers</text>
+
+    <!-- QC to D3 -->
+    <path d="M 940 500 L 800 810" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="880" y="600" class="label">Quality Data</text>
+
+    <!-- Analytics to D3 -->
+    <path d="M 940 800 L 800 825" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="850" y="800" class="label">Fetch Data</text>
+
+    <!-- Analytics to AI Service -->
+    <path d="M 1060 800 Q 1150 800 1230 530" class="arrow" marker-end="url(#arrowhead)"/>
+    <text x="1150" y="730" class="label">NLP Task</text>
+
+</svg>
